@@ -1,13 +1,12 @@
 class CasaCambio
 	attr_accessor :cota, :dol_disp, :rs_disp, :lista_t, :i
 
-	def initialize(cota, dol_disp, rs_disp, lista_t = [])
+	def initialize(cota, dol_disp, rs_disp, lista_t = [], i = 1)
 		@cota = cota
 		@dol_disp = dol_disp
 		@rs_disp = rs_disp
 		@lista_t = lista_t
-
-		@i = 1
+		@i = i
 	end
 
 	def negociar(dolar, disp, sif_moeda, tipo, moeda, calc)
@@ -44,6 +43,8 @@ class CasaCambio
 					@rs_disp += valor
 				end
 				@i += 1
+				puts "Operação realizada com sucesso! Deseja fazer algo mais?"
+				puts
 			else
 				puts 'Ok, deseja fazer algo mais?'
 				puts

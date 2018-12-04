@@ -7,9 +7,6 @@ class Transacao
 		@moeda = moeda
 		@cota = cota
 		@total = total
-
-		puts "Operação realizada com sucesso! Deseja fazer algo mais?"
-		puts
 	end
 
 	def exibir
