@@ -1,3 +1,4 @@
+require 'sqlite3'
 require_relative 'Transacao'
 require_relative 'Caixa'
 
