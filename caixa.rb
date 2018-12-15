@@ -12,7 +12,7 @@ class Caixa
 		print 'Insira seu nome: '
 		@nome = gets.chomp
 
-		if caixa_dia
+		if caixa_dia and funcionario_dia
 			puts
 			puts balanco
 			puts
@@ -43,6 +43,22 @@ class Caixa
 				@rs_disp = caixa['reaisCaixa']
 			end
 			return true
+		end
+		false
+	end
+
+	def funcionario_dia
+		# Conecta ao banco e faz o SELECT
+		db = SQLite3::Database.open 'DB_CAMBIO'
+		db.results_as_hash = true
+		funcionarios = db.execute("SELECT nomeCaixa FROM TB_CAIXAS WHERE dataCaixa = ? AND nomeCaixa = ?", [Time.now.strftime('%D'), @nome])
+		db.close
+		if !funcionarios.empty?
+			funcionarios.each do | func |
+				if @nome == func['nomeCaixa']
+					return true					
+				end
+			end
 		end
 		false
 	end
